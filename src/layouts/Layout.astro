@@ -6,94 +6,181 @@
   <meta name="description" content="Astro description" />
   <meta name="viewport" content="width=device-width" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <title>Título de la Página</title>
-  <!-- Enlace a Tailwind CSS -->
+  <title>Sistema Operativo</title>
+
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
     body {
       font-family: system-ui, sans-serif;
-      background: url('https://i.pinimg.com/originals/3b/07/e6/3b07e686956703b179a8be66231f21b6.jpg') center/cover fixed; /* Fondo de imagen centrado y cubierto */
-      color: #fff; /* Color de texto blanco */
-      margin: 0; /* Eliminar margen predeterminado del cuerpo */
+      background: url('https://i.pinimg.com/originals/3b/07/e6/3b07e686956703b179a8be66231f21b6.jpg') center/cover fixed;
+      color: #fff;
+      margin: 0;
       display: flex;
-      flex-direction: column; /* Columna para alinear contenido verticalmente */
-      min-height: 100vh; /* Mínimo de altura de la ventana */
+      flex-direction: column;
+      min-height: 100vh;
+      animation: fadeIn 1s ease-in-out;
     }
 
     #app {
-      flex: 1; /* El contenido principal ocupa todo el espacio restante */
+      flex: 1;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
     main {
-      flex: 1; /* El contenido principal ocupa todo el espacio disponible */
+      flex: 1;
     }
 
     footer {
-      min-height: 40px; /* Altura mínima de la barra de tareas */
-      max-height: 60px; /* Altura máxima de la barra de tareas */
-      overflow: hidden; /* Ocultar cualquier contenido adicional que exceda la altura máxima */
-      background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
-      backdrop-filter: blur(10px); /* Efecto de desenfoque */
-      border-top-left-radius: 20px; /* Borde superior izquierdo circular */
-      border-top-right-radius: 20px; /* Borde superior derecho circular */
+      min-height: 40px;
+      max-height: 60px;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
       display: flex;
-      justify-content: space-between; /* Alinear contenido a los extremos */
-      align-items: center; /* Centrar contenido verticalmente */
-      padding: 0 1rem; /* Espaciado interno */
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      animation: slideIn 0.5s ease-out;
     }
 
     .search-bar {
-      flex: 1; /* Ocupa todo el espacio restante */
-      max-width: 200px; /* Ancho máximo de la barra de búsqueda */
+      flex: 1;
+      max-width: 300px;
+      margin-right: 20px;
     }
 
     input[type="text"] {
-      /* Estilo para la barra de búsqueda */
-      background-color: transparent;
+      background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid #666;
-      padding: 6px 10px;
-      border-radius: 4px;
+      padding: 8px 12px;
+      border-radius: 20px;
       color: #fff;
-      width: 100%; /* Ocupa todo el ancho disponible */
-      transition: border-color 0.3s ease;
+      width: 100%;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      font-family: 'Roboto', sans-serif; /* Cambio de fuente */
     }
 
     input[type="text"]:focus {
       border-color: #aaa;
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      outline: none;
     }
 
     .app-icons {
       display: flex;
-      justify-content: flex-end; /* Alinear iconos a la derecha */
-      align-items: center; /* Centrar iconos verticalmente */
+      justify-content: flex-end;
+      align-items: center;
     }
 
     .app-icons button {
-      margin-left: 10px; /* Espacio entre botones */
+      margin-left: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .app-icons button:hover {
+      transform: scale(1.1);
     }
 
     .app-icons button img {
-      width: 30px; /* Tamaño de los iconos */
+      width: 30px;
       height: 30px;
-      filter: brightness(0.8); /* Oscurece los iconos */
+      filter: brightness(0.8);
+      transition: filter 0.3s ease, transform 0.3s ease;
     }
 
     .app-icons button img:hover {
-      filter: brightness(1); /* Aclara los iconos al pasar el ratón */
+      filter: brightness(1);
+      transform: rotate(360deg);
     }
 
     .center-icon {
       display: flex;
-      align-items: center; /* Centrar verticalmente */
-      margin-left: auto; /* Empuja el elemento al centro */
-      margin-right: auto; /* Empuja el elemento al centro */
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .center-icon button img {
-      width: 40px; /* Tamaño del icono central */
+      width: 40px;
       height: 40px;
+      animation: pulse 2s infinite;
+    }
+
+    .status-bar {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      background-color: rgba(110, 110, 110, 0.8);
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+
+    .status-bar img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .status-bar span {
+      font-size: 14px;
+      display: none;
+      position: absolute;
+      top: 30px;
+      right: 50%;
+      transform: translateX(50%);
+      background-color: rgba(0, 0, 0, 0); /* Cambia a un fondo completamente transparente */
+      padding: 0.5rem;
+      border-radius: 4px;
+      color: #ffffff;
+      z-index: 1;
+    }
+
+    .status-bar:hover span {
+      display: block;
     }
   </style>
 </head>
@@ -101,38 +188,54 @@
 <body>
   <div id="app">
     <main></main>
+
+    <div class="status-bar" onmouseover="showSystemInfo()" onmouseout="hideSystemInfo()">
+      <img src="https://cdn.icon-icons.com/icons2/1862/PNG/512/batteryfullcharged_118437.png" alt="Battery">
+      <span id="batteryInfo">100%</span>
+      <img src="https://images.vexels.com/content/137120/preview/wifi-flat-icon-218340.png" alt="WiFi" style="margin: 0 10px;">
+      <span id="wifiInfo">Connected</span>
+    </div>
+
     <footer>
-      <!-- Barra de búsqueda -->
       <div class="search-bar">
-        <input type="text" placeholder="Buscar..." class="bg-transparent border border-gray-600 px-2 py-1 rounded-md w-full text-white focus:outline-none focus:border-gray-400">
+        <input 
+          type="text" 
+          placeholder="Buscar . . . . . ." 
+          class="bg-transparent border border-white-600 px-2 py-1 rounded-md w-full text-white focus:outline-none focus:border-white-400" 
+          id="searchInput"
+        >
       </div>
-      <!-- Botón de inicio -->
+
       <div class="center-icon">
         <button class="focus:outline-none">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Sphere_wireframe_10deg_6r.svg/1200px-Sphere_wireframe_10deg_6r.svg.png" alt="Inicio">
+          <img src="https://seeklogo.com/images/B/bola-copa-brasil-2014-logo-2E974327EF-seeklogo.com.png" alt="Inicio">
         </button>
       </div>
-      <!-- App Icons -->
+
       <div class="app-icons">
-        <button class="focus:outline-none">
+        <button class="focus:outline-none" onclick="window.location.href=' https://www.google.com';">
           <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png" alt="Chrome">
         </button>
-        <button class="focus:outline-none">
+
+        <button class="focus:outline-none" onclick="window.location.href=' https://drive.google.com/drive/home';">
           <img src="https://static.vecteezy.com/system/resources/previews/024/090/509/original/folder-file-documents-free-png.png" alt="Documentos">
         </button>
-        <button class="focus:outline-none">
+
+        <button class="focus:outline-none" onclick="window.location.href=' https://docs.google.com/document/u/0/';">
           <img src="https://icones.pro/wp-content/uploads/2022/06/icone-microsoft-word-bleu.png" alt="Word">
         </button>
-       <button class="focus:outline-none">
+
+        <button class="focus:outline-none">
           <img src="https://cdn-icons-png.flaticon.com/512/1756/1756647.png" alt="Configuración">
         </button>
-        <button class="focus:outline-none">
+
+        <button class="focus:outline-none" onclick="window.location.href=' https://www.instagram.com/';">
           <img src="https://png.pngtree.com/png-vector/20230225/ourmid/pngtree-instagram-social-media-icon-png-image_6618438.png" alt="Instagram">
         </button>
-        <button class="focus:outline-none">
+
+        <button class="focus:outline-none" onclick="window.location.href=' https://www.google.com/intl/es/gmail/about/';">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png" alt="Gmail">
         </button>
-        <!-- Otros iconos -->
       </div>
     </footer>
   </div>
